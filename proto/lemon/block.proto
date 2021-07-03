@@ -1,0 +1,15 @@
+syntax = "proto3";
+package lemonsuy.lemon.lemon;
+
+option go_package = "github.com/lemonsuy/lemon/x/lemon/types";
+
+import "gogoproto/gogo.proto";
+
+message Block {
+  string creator = 1;
+  uint64 id = 2;
+  uint64 blockNumber = 3; 
+  string blockHash = 4; 
+  string blockHeader = 5; 
+  string blockData = 6; 
+}

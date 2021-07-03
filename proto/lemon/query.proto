@@ -1,0 +1,71 @@
+syntax = "proto3";
+package lemonsuy.lemon.lemon;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// this line is used by starport scaffolding # 1
+import "lemon/block.proto";
+import "lemon/transaction.proto";
+
+option go_package = "github.com/lemonsuy/lemon/x/lemon/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // this line is used by starport scaffolding # 2
+
+	// Queries a block by id.
+	rpc Block(QueryGetBlockRequest) returns (QueryGetBlockResponse) {
+		option (google.api.http).get = "/lemonsuy/lemon/lemon/block/{id}";
+	}
+
+	// Queries a list of block items.
+	rpc BlockAll(QueryAllBlockRequest) returns (QueryAllBlockResponse) {
+		option (google.api.http).get = "/lemonsuy/lemon/lemon/block";
+	}
+
+
+	// Queries a transaction by id.
+	rpc Transaction(QueryGetTransactionRequest) returns (QueryGetTransactionResponse) {
+		option (google.api.http).get = "/lemonsuy/lemon/lemon/transaction/{id}";
+	}
+
+	// Queries a list of transaction items.
+	rpc TransactionAll(QueryAllTransactionRequest) returns (QueryAllTransactionResponse) {
+		option (google.api.http).get = "/lemonsuy/lemon/lemon/transaction";
+	}
+
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetBlockRequest {
+	uint64 id = 1;
+}
+
+message QueryGetBlockResponse {
+	Block Block = 1;
+}
+
+message QueryAllBlockRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllBlockResponse {
+	repeated Block Block = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetTransactionRequest {
+	uint64 id = 1;
+}
+
+message QueryGetTransactionResponse {
+	Transaction Transaction = 1;
+}
+
+message QueryAllTransactionRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllTransactionResponse {
+	repeated Transaction Transaction = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

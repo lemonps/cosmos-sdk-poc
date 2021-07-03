@@ -1,0 +1,13 @@
+syntax = "proto3";
+package lemonsuy.lemon.lemon;
+
+option go_package = "github.com/lemonsuy/lemon/x/lemon/types";
+
+import "gogoproto/gogo.proto";
+
+message Transaction {
+  string creator = 1;
+  uint64 id = 2;
+  string txhash = 3; 
+  string nonce = 4; 
+}

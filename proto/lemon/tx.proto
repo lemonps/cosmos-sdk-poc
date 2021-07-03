@@ -1,0 +1,76 @@
+syntax = "proto3";
+package lemonsuy.lemon.lemon;
+
+// this line is used by starport scaffolding # proto/tx/import
+import "lemon/block.proto";
+import "lemon/transaction.proto";
+
+option go_package = "github.com/lemonsuy/lemon/x/lemon/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateBlock(MsgCreateBlock) returns (MsgCreateBlockResponse);
+  rpc UpdateBlock(MsgUpdateBlock) returns (MsgUpdateBlockResponse);
+  rpc DeleteBlock(MsgDeleteBlock) returns (MsgDeleteBlockResponse);
+  rpc CreateTransaction(MsgCreateTransaction) returns (MsgCreateTransactionResponse);
+  rpc UpdateTransaction(MsgUpdateTransaction) returns (MsgUpdateTransactionResponse);
+  rpc DeleteTransaction(MsgDeleteTransaction) returns (MsgDeleteTransactionResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgCreateBlock {
+  string creator = 1;
+  uint64 blockNumber = 2;
+  string blockHash = 3;
+  string blockHeader = 4;
+  string blockData = 5;
+}
+
+message MsgCreateBlockResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateBlock {
+  string creator = 1;
+  uint64 id = 2;
+  uint64 blockNumber = 3;
+  string blockHash = 4;
+  string blockHeader = 5;
+  string blockData = 6;
+}
+
+message MsgUpdateBlockResponse { }
+
+message MsgDeleteBlock {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteBlockResponse { }
+
+message MsgCreateTransaction {
+  string creator = 1;
+  string txhash = 2;
+  string nonce = 3;
+}
+
+message MsgCreateTransactionResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateTransaction {
+  string creator = 1;
+  uint64 id = 2;
+  string txhash = 3;
+  string nonce = 4;
+}
+
+message MsgUpdateTransactionResponse { }
+
+message MsgDeleteTransaction {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteTransactionResponse { }

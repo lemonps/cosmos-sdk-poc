@@ -1,0 +1,18 @@
+syntax = "proto3";
+package lemonsuy.lemon.lemon;
+
+// this line is used by starport scaffolding # genesis/proto/import
+import "lemon/block.proto";
+import "lemon/transaction.proto";
+
+option go_package = "github.com/lemonsuy/lemon/x/lemon/types";
+
+// GenesisState defines the lemon module's genesis state.
+message GenesisState {
+    // this line is used by starport scaffolding # genesis/proto/state
+		repeated Block blockList = 3; // this line is used by starport scaffolding # genesis/proto/stateField
+		uint64 blockCount = 4; // this line is used by starport scaffolding # genesis/proto/stateField
+		repeated Transaction transactionList = 1; // this line is used by starport scaffolding # genesis/proto/stateField
+		uint64 transactionCount = 2; // this line is used by starport scaffolding # genesis/proto/stateField
+    // this line is used by starport scaffolding # ibc/genesis/proto
+}
